@@ -14,7 +14,7 @@ router.post('/:device_token', function(req, res, next) {
     imp_request.send_schedule(new_schedule).then(function() {
       res.json(result);
     }, function(err) {
-      next(err);
+      next(new Error("Can't access device!"));
     });
   });
 });

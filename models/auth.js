@@ -16,12 +16,7 @@ var oauthClients = [{
         refresh_token: [
             'hayk'
         ]
-    },
-    users = [{
-        id : '123',
-        username: 'hpilosyan',
-        password: '1234'
-    }];
+    };
 
 function get_access_tokens () {
   var deferred = promise.defer();
@@ -79,14 +74,19 @@ function add_refresh_token (token) {
   return deferred.promise;
 }
 
+function get_user (username, password) {
+  var deferred = promise.defer();
 
-// Debug function to dump the state of the data stores
-model.dump = function() {
-  console.log('oauthClients', oauthClients);
-  console.log('authorizedClientIds', authorizedClientIds);
-  console.log('users', users);
-};
+  db.collection('user').findOne({username: username, password: password}, function (err, user) {
+    if (err) {
+      deferred.reject(err);
+    } else {
+      deferred.resolve(user);
+    }
+  });
 
+  return deferred.promise;
+}
 
 model.getAccessToken = function (bearerToken, callback) {
   get_access_tokens().then(function (oauthAccessTokens) {
@@ -154,11 +154,9 @@ model.saveRefreshToken = function (refreshToken, clientId, expires, userId, call
  * Required to support password grant type
  */
 model.getUser = function (username, password, callback) {
-  for(var i = 0, len = users.length; i < len; i++) {
-    var elem = users[i];
-    if(elem.username === username && elem.password === password) {
-      return callback(false, elem);
-    }
-  }
-  callback(false, false);
+  get_user(username, password).then(function (user) {
+    callback(false, user);
+  }, function (e) {
+    callback(false, false);
+  });
 };
