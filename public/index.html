@@ -23,7 +23,7 @@
 <title>Medicus</title>
 </head>
 <body>
-	<div class="med-main" style="display: none;">   
+	<div class="med-main" style="display: block;">   
         <div class="med-header">
             <div class="med-logo"><img src="images/logo.png"></div>
             <div class="med-user">Y. Amirkhanyan</div>
@@ -128,7 +128,7 @@
                                   <button type="button" class="btn btn-default">once a week</button>
                                 </div>
                             </div>
-                            <div class="pill-box">
+                            <div id="timeBox1" class="pill-box">
                                 <h3>Time</h3>
                                 <div class="time-group">
                                     <div class="input-group date timepicker">
@@ -145,21 +145,7 @@
                                         </button>
                                     </div>
                                 </div>
-                                <div class="time-group">
-                                    <div class="input-group date timepicker">
-                                        <input type="text" class="form-control" />
-                                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
-                                        </span>
-                                    </div>
-                                    <div class="input-group">
-                                        <button type="button" class="btn btn-default">
-                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                        </button>
-                                        <button type="button" class="btn btn-default">
-                                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                                        </button>
-                                    </div>
-                                </div>
+                                
                             </div>
                             <div class="pill-box">
                                   <button type="button" class="btn btn-large btn-current">Save</button>
@@ -199,7 +185,7 @@
                                   <button type="button" class="btn btn-default">once a week</button>
                                 </div>
                             </div>
-                            <div class="pill-box">
+                            <div id="timeBox2" class="pill-box">
                                 <h3>Time</h3>
                                 <div class="time-group">
                                     <div class="input-group date timepicker">
@@ -208,29 +194,15 @@
                                         </span>
                                     </div>
                                     <div class="input-group">
-                                        <button type="button" class="btn btn-default">
+                                        <button type="button" id="addTimestamp2" class="btn btn-default">
                                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                         </button>
-                                        <button type="button" class="btn btn-default">
+                                        <button type="button" id="removeTimestamp2" class="btn btn-default">
                                             <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
                                         </button>
                                     </div>
                                 </div>
-                                <div class="time-group">
-                                    <div class="input-group date timepicker">
-                                        <input type="text" class="form-control" />
-                                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
-                                        </span>
-                                    </div>
-                                    <div class="input-group">
-                                        <button type="button" class="btn btn-default">
-                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                        </button>
-                                        <button type="button" class="btn btn-default">
-                                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                                        </button>
-                                    </div>
-                                </div>
+                                
                             </div>
                             <div class="pill-box">
                                   <button type="button" class="btn btn-large btn-current">Save</button>
@@ -270,7 +242,7 @@
                                   <button type="button" class="btn btn-default">once a week</button>
                                 </div>
                             </div>
-                            <div class="pill-box">
+                            <div id="timeBox3" class="pill-box">
                                 <h3>Time</h3>
                                 <div class="time-group">
                                     <div class="input-group date timepicker">
@@ -279,29 +251,15 @@
                                         </span>
                                     </div>
                                     <div class="input-group">
-                                        <button type="button" class="btn btn-default">
+                                        <button type="button" id="addTimestamp3" class="btn btn-default">
                                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                         </button>
-                                        <button type="button" class="btn btn-default">
+                                        <button type="button" id="removeTimestamp3" class="btn btn-default">
                                             <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
                                         </button>
                                     </div>
                                 </div>
-                                <div class="time-group">
-                                    <div class="input-group date timepicker">
-                                        <input type="text" class="form-control" />
-                                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
-                                        </span>
-                                    </div>
-                                    <div class="input-group">
-                                        <button type="button" class="btn btn-default">
-                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                        </button>
-                                        <button type="button" class="btn btn-default">
-                                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                                        </button>
-                                    </div>
-                                </div>
+                                
                             </div>
                             <div class="pill-box">
                                   <button type="button" class="btn btn-large btn-current">Save</button>
@@ -370,7 +328,7 @@
             </div><!--med-content-->
         </div><!--med-container-->
         </div><!--med-main-->
-        <div class="med-login-page">
+        <div class="med-login-page"  style="display: none;">
             <div class="login-logo"><img src="images/login_logo.png"></div>
                 <div class="login-box">
                 <h3>Sign In</h3>

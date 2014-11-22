@@ -2,6 +2,10 @@ var BOX_1=1;
 var BOX_2=2;
 var BOX_3=3;
 
+var timestamp1Count=1;
+var timestamp2Count=1;
+var timestamp3Count=1;
+
 $(function(){	
 	$('.datepicker').datetimepicker({
     	 pickTime: false
@@ -26,12 +30,15 @@ function attachEvents()
 	
 	//Schedule
 	$("#addTimestamp1").click(function(){onAddTimestampClick(BOX_1)});
+	$("#removeTimestamp1").click(function(){onremoveTimestampClick(BOX_1)});
 	$("#saveScheduleButton1").click(function(){onSaveScheduleButtonClick(BOX_1)});
 	
 	$("#addTimestamp2").click(function(){onAddTimestampClick(BOX_2)});
+	$("#removeTimestamp2").click(function(){onremoveTimestampClick(BOX_2)});
 	$("#saveScheduleButton2").click(function(){onSaveScheduleButtonClick(BOX_2)});
 	
 	$("#addTimestamp3").click(function(){onAddTimestampClick(BOX_3)});
+	$("#removeTimestamp3").click(function(){onremoveTimestampClick(BOX_3)});
 	$("#saveScheduleButton3").click(function(){onSaveScheduleButtonClick(BOX_3)});
 		
 	//Pills
@@ -86,14 +93,64 @@ function onAddTimestampClick(selectedBox)
 		{
 			var timestampHtml='<div class="time-group"><div class="input-group date timepicker"><input type="text" class="form-control" /><span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span></div></div>';
 			$("#timeBox1").append(timestampHtml);
+			timestamp1Count++;
+			$('#timeBox1 .timepicker:last-child').datetimepicker({
+				pickDate: false
+			});
 			break;
 		}
 		case BOX_2:
 		{
+			var timestampHtml='<div class="time-group"><div class="input-group date timepicker"><input type="text" class="form-control" /><span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span></div></div>';
+			$("#timeBox2").append(timestampHtml);
+			timestamp2Count++;
+			$('#timeBox2 .timepicker:last-child').datetimepicker({
+				pickDate: false
+			});
 			break;
 		}
 		case BOX_3:
 		{
+			var timestampHtml='<div class="time-group"><div class="input-group date timepicker"><input type="text" class="form-control" /><span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span></div></div>';
+			$("#timeBox3").append(timestampHtml);
+			timestamp3Count++;
+			$('#timeBox3 .timepicker:last-child').datetimepicker({
+				pickDate: false
+			});
+			break;
+		}
+	}
+}
+
+function onremoveTimestampClick(selectedBox)
+{
+	switch(selectedBox)
+	{
+		case BOX_1:
+		{
+			if(timestamp1Count!=1)
+			{
+				$("#timeBox1 .time-group:last-child").remove();
+				timestamp1Count--;
+			}
+			break;
+		}
+		case BOX_2:
+		{
+			if(timestamp2Count!=1)
+			{
+				$("#timeBox2 .time-group:last-child").remove();
+				timestamp2Count--;
+			}
+			break;
+		}
+		case BOX_3:
+		{
+			if(timestamp3Count!=1)
+			{
+				$("#timeBox3 .time-group:last-child").remove();
+				timestamp3Count--;
+			}
 			break;
 		}
 	}
