@@ -5,9 +5,11 @@ var user = require('../models/user');
 var router = express.Router();
 
 router.get('/:box', function(req, res) {
-  var box = req.param.box;
+  var box = req.params.box;
+
   user.get_user().then(function (user, box) {
     var token = user.mobile_token;
+    send_notification(token, box);
   });
 });
 
