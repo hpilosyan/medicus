@@ -5,15 +5,20 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var config = require('./config/config');
-var routes = require('./routes');
 
 var app = express();
+
+var routes = require('./routes')(app);
 
 // Enable Cross Origin Access for all domains
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
+  if (req.method == 'OPTIONS') {
+    res.send(200);
+  } else {
+    next();
+  }
 });
 
 // uncomment after placing your favicon in /public
