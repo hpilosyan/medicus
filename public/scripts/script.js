@@ -2,9 +2,7 @@ var BOX_1=1;
 var BOX_2=2;
 var BOX_3=3;
 
-$(function(){
-	var selectBox = $("select").selectBoxIt();
-	
+$(function(){	
 	$('.datepicker').datetimepicker({
     	 pickTime: false
     });
@@ -20,7 +18,7 @@ $(function(){
 function attachEvents()
 {
 	//Common
-	$("#deviceSelect").change(onDevicesSelectChange);
+	$(".dropdown > select").change(onDevicesSelectChange);
 	$("li.pills").click(onPillsTabClick);
 	$("li.schedule").click(onScheduleTabClick);
 	$("li.shopping-card").click(onShoppingCardTabClick);
@@ -49,7 +47,13 @@ function getDevicesList()
 		{
 			var devicesList=data.devices;
 			//Fill the Devices dropdown
-			//TODO
+			for(var i=0; i<devicesList.length; i++)
+			{
+				var option="<option value='"+devicesList[i].token+"'>"+devicesList[i].name+"</option>";
+				$("div.dropdown > select").append(option);
+			}
+			
+			$("select").selectBoxIt();
 		}
 		else
 		{
@@ -80,6 +84,8 @@ function onAddTimestampClick(selectedBox)
 	{
 		case BOX_1:
 		{
+			var timestampHtml='<div class="time-group"><div class="input-group date timepicker"><input type="text" class="form-control" /><span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span></div></div>';
+			$("#timeBox1").append(timestampHtml);
 			break;
 		}
 		case BOX_2:
