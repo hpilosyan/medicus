@@ -193,7 +193,7 @@ h1.cur-title {
     font-weight: 500;
     line-height: 35px;
     margin: 0;
-    width: 80px;
+    width: 100px;
 }
 .pill-box {
 	padding: 20px 30px;
@@ -237,7 +237,7 @@ h1.cur-title {
     margin: 0;
 }
 #schedule-boxes .dropdown {
-	margin-left: 90px;
+	margin-left: 110px;
     margin-top: 12px;
 }
 .bootstrap-datetimepicker-widget td.active, .bootstrap-datetimepicker-widget td.active:hover, .btn-primary {
@@ -245,4 +245,19 @@ h1.cur-title {
 }
 .btn-primary {
 	border-color: #660b10 !important;
+}
+#schedule-boxes .btn-group {
+	margin: 10px;
+}
+.btn-current {
+    background: none repeat scroll 0 0 #660b10 !important;
+    border-color: #660b10 !important;
+    color: #fff !important;
+}
+.btn-large {
+	width: 200px;
+	float: right;
+}
+.pill-item {
+	margin-bottom: 40px;
 }
