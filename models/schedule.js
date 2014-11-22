@@ -15,6 +15,21 @@ module.exports = {
         if (err) {
           deferred.reject(err);
         } else {
+          // If schedule doesn't contain this box, add a new one
+          if (result === 0) {
+            db.collection('device').update(
+              {token: device_token},
+              {'$push': {schedule: {'$each': [schedule], '$sort': {box: 1}}}},
+              function (err, result) {
+                if (err) {
+                  deferred.reject(err);
+                } else {
+                  deferred.resolve(result);
+                }
+              }
+            );
+            return;
+          }
           deferred.resolve(result);
         }
       }
