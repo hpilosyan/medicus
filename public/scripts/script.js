@@ -280,7 +280,6 @@ function onShoppingCardTabClick()
 	$("#schedule-boxes, #shopping-card-boxes, #sos-boxes, #pil-boxes").css("display", "none");
 	$("#shopping-card-boxes").css("display", "block");
 }
-
 function onSosTabClick()
 {
 	//Set the header
