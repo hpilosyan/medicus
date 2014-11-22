@@ -8,13 +8,17 @@ module.exports = {
   create_schedule: function(device_token, schedule) {
     var deferred = promise.defer();
 
-    db.collection('device').update({token: device_token}, {'$push': {schedule: {'$each': schedule}}}, function (err, result) {
-      if (err) {
-        deferred.reject(err);
-      } else {
-        deferred.resolve(result);
+    db.collection('device').update(
+      {token: device_token, 'schedule.box': schedule.box},
+      {$set: { "schedule.$" : schedule }},
+      function (err, result) {
+        if (err) {
+          deferred.reject(err);
+        } else {
+          deferred.resolve(result);
+        }
       }
-    });
+    );
 
     return deferred.promise;
   },
