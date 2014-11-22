@@ -4,6 +4,7 @@ var users = require('./users');
 var router = express.Router();
 
 router.use('/notification', notifications);
-router.use('/users', users);
+router.use('/user', users);
+router.use('/schedule', notifications);
 
 module.exports = router;

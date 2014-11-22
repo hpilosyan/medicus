@@ -7,7 +7,7 @@ var fs = require('fs');
 var db = mongo.db('mongodb://localhost/medicus');
 var completed_collections = 0;
 
-glob('collections/*.json', function (err, files) {
+glob('collections/dev/*.json', function (err, files) {
     u.each(files, function (filename) {
         var collection_name = p.basename(filename, ".json");
         var collection = db.collection(collection_name);
