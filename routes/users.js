@@ -4,7 +4,7 @@ var router = express.Router();
 
 router.get('/', function(req, res, next) {
   user.get_all().then(function(users) {
-    res.json(users);
+    res.json(users[0]);
   }, function(err) {
     next(err);
   });

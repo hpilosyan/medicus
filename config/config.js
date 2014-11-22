@@ -4,10 +4,6 @@ var config = {
     development: {
         api_version: 'v1',
 
-        host: 'http://localhost',
-
-        port: '3000',
-
         rest_url: function() {
             return '/api/' + this.api_version;
         },
@@ -22,18 +18,16 @@ var config = {
     production: {
         api_version: 'v1',
 
-        host: 'http://localhost',
-
-        port: '3000',
-
         rest_url: function() {
             return '/api/' + this.api_version;
         },
 
         db: {
-            host: 'localhost',
-            port: 27017,
-            database: '/medicus'
+            host: 's051740.mongolab.com',
+            port: 51740,
+            database: '/medicus',
+            username: 'hpilosyan',
+            password: 1234
         }
     }
 };
