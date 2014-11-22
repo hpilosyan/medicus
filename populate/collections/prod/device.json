@@ -3,8 +3,9 @@
   "token": "sadbbbjhbasd",
   "name": "Some name",
   "schedule": [
-    {"box": 1, "pill_id": 24, "time": {"timestamps": [84589645, 845896455], "days_interval": 2}, "amount": 10},
-    {"box": 2, "pill_id": 26, "time": {"timestamps": [84589645, 845896455], "days_interval": 2}, "amount": 10},
-    {"box": 3, "pill_id": 28, "time": {"timestamps": [84589645, 845896455], "days_interval": 2}, "amount": 10}
-  ]
+    {"box": 1, "pill_name": "Fexofast", "time": {"timestamps": [84589645, 845896455], "days_interval": 2}, "amount": 10},
+    {"box": 2, "pill_name": "Unispaz", "time": {"timestamps": [84589645, 845896455], "days_interval": 2}, "amount": 10},
+    {"box": 3, "pill_name": "Magnelis B6", "time": {"timestamps": [84589645, 845896455], "days_interval": 2}, "amount": 10}
+  ],
+  "pills": ["Fexofast", "Unispaz", "Magnelis B6"]
 }
