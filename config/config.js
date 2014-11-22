@@ -23,7 +23,7 @@ var config = {
         },
 
         db: {
-            host: 's051740.mongolab.com',
+            host: 'ds051740.mongolab.com',
             port: 51740,
             database: '/medicus',
             username: 'hpilosyan',
