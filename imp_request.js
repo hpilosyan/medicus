@@ -1,16 +1,29 @@
 'use strict';
+
+var promise = require('node-promise');
 var request = require('request');
 
-function imp_request () {
+function send_schedule(schedule) {
+  var deferred = promise.defer();
+
   request.post(
-    'http://www.yoursite.com/formpage',
-    { form: { key: 'value' } },
+    {
+      url: 'https://agent.electricimp.com/NB5XyYGwJkmr/update',
+      json: true,
+      body: schedule
+    },
     function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            console.log(body)
+          deferred.resolve(response);
+        } else {
+          deferred.reject(error);
         }
     }
   );
+
+  return deferred.promise;
 }
 
-module.exports.request = request;
+module.exports = {
+  send_schedule: send_schedule
+};
