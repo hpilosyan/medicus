@@ -1,3 +1,6 @@
+* {
+	outline: none !important;
+}
 .timepicker a {
 	color: #660b10;
 }
@@ -274,4 +277,47 @@ h1.cur-title {
 #shopping-card-boxes .input-group {
 	width: auto;
 	margin-right: 15px;
+}
+.med-login-page {
+	position: absolute;
+	background: #a70027;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+}
+.login-logo img {
+	display: block;
+	margin: 20px auto;
+	width: 150px;
+}
+.login-box {
+	border-right: 5px;
+	padding: 10px 20px;
+	width: 400px;
+	margin: 50px auto;
+	border: 1px solid rgba(0, 0, 0, 0.12);
+	text-align: center;
+	box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+}
+.login-box .input-group {
+	width: 100%;
+	margin: 25px 0;
+}
+.login-box h3 {
+	margin: 10px;
+	color: #ffffff;
+}
+.login-box .input-group input {
+	height: 45px;
+	font-size: 18px;
+	color: #660b10;
+}
+.login-box .input-group button {
+	background: #660b10 !important;
+	border-color: #660b10 !important;
+	color: #ffffff;
+	width: 60%;
+	height: 45px;
+	font-size: 16px;
 }

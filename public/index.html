@@ -23,353 +23,367 @@
 <title>Medicus</title>
 </head>
 <body>
-	<div class="med-header">
-    	<div class="med-logo"><img src="images/logo.png"></div>
-        <div class="med-user">Y. Amirkhanyan</div>
-        <div class="dropdown">
-            <select>
-              <option value="0">Select Device</option>
-              <option value="1">Saab</option>
-              <option value="2">Opel</option>
-              <option value="3">Audi</option>
-            </select>
-        </div>
-        <div class="med-log">
-          <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>Log Out
-        </div>
-    </div><!--med-header-->
-    <div class="med-container">
-    	<div class="med-menu">
-        	<ul>
-              <li class="pills">
-                <span class="cur">Pills</span>
-              </li>
-              <li class="schedule">
-                <span>Schedule</span>
-              </li>
-              <li class="shopping-card">
-                <span>Shopping Card</span>
-              </li>
-              <li class="sos">
-                <span>SOS</span>
-              </li>
-            </ul>
-        </div><!--med-menu-->
-        <div class="med-content">
-        	<h1 class="cur-title">Pills</h1><!--popxvpx!!!!!!!!!!!!!!-->
-            
-            <div id="pil-boxes" class="med-pill-boxes" style="display: block">
-            	<div class="pill-box">
-                	<h3>Box 1</h3>
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Medicine Name">
-                    </div>
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Pills Quantity" />
-                    </div>
-                    <div class="input-group">
-                      <button type="button" class="btn btn-default">Save</button>
-                    </div>
-                </div>
-                <div class="pill-box">
-                	<h3>Box 2</h3>
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Medicine Name">
-                    </div>
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Pills Quantity" />
-                    </div>
-                    <div class="input-group">
-                      <button type="button" class="btn btn-default">Save</button>
-                    </div>
-                </div>
-                <div class="pill-box">
-                	<h3>Box 3</h3>
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Medicine Name">
-                    </div>
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Pills Quantity" />
-                    </div>
-                    <div class="input-group">
-                      <button type="button" class="btn btn-default">Save</button>
-                    </div>
-                </div>
-            </div><!--#pil-boxes-->
-            <div id="schedule-boxes" style="display: none;"> 
-            	<div class="pill-item">
-                    <h3>Pill Boxe 1</h3>
-                    <div class="med-pill-boxes">
-                        <div class="pill-box">
-                            <h3>Pill</h3>
-                            <div class="dropdown">
-                                <select>
-                                  <option value="0">Select Device</option>
-                                  <option value="1">Saab</option>
-                                  <option value="2">Opel</option>
-                                  <option value="3">Audi</option>
-                                </select>
-                            </div>
+	<div class="med-main" style="display: none;">   
+        <div class="med-header">
+            <div class="med-logo"><img src="images/logo.png"></div>
+            <div class="med-user">Y. Amirkhanyan</div>
+            <div class="dropdown">
+                <select>
+                  <option value="0">Select Device</option>
+                </select>
+            </div>
+            <div class="med-log">
+              <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>Log Out
+            </div>
+        </div><!--med-header-->
+        <div class="med-container">
+            <div class="med-menu">
+                <ul>
+                  <li class="pills">
+                    <span class="cur">Pills</span>
+                  </li>
+                  <li class="schedule">
+                    <span>Schedule</span>
+                  </li>
+                  <li class="shopping-card">
+                    <span>Shopping Card</span>
+                  </li>
+                  <li class="sos">
+                    <span>SOS</span>
+                  </li>
+                </ul>
+            </div><!--med-menu-->
+            <div class="med-content">
+                <h1 class="cur-title">Pills</h1><!--popxvpx!!!!!!!!!!!!!!-->
+                
+                <div id="pil-boxes" class="med-pill-boxes" style="display: block">
+                    <div class="pill-box">
+                        <h3>Box 1</h3>
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Medicine Name">
                         </div>
-                        <div class="pill-box">
-                            <h3>Date</h3>
-                            <div class="input-group date datepicker">
-                                <input type="text" class="form-control" data-date-format="YYYY/MM/DD"/>
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Pills Quantity" />
                         </div>
-                        <div class="pill-box">
-                            <h3>Frequency</h3>
-                            <div class="btn-group" role="group">
-                              <button type="button" class="btn btn-default btn-current">Every day</button>
-                              <button type="button" class="btn btn-default">Every day</button>
-                              <button type="button" class="btn btn-default">Once in two days</button>
-                              <button type="button" class="btn btn-default">Once in three days</button>
-                              <button type="button" class="btn btn-default">once a week</button>
-                            </div>
+                        <div class="input-group">
+                          <button type="button" class="btn btn-default">Save</button>
                         </div>
-                        <div class="pill-box">
-                            <h3>Time</h3>
-                            <div class="time-group">
-                                <div class="input-group date timepicker">
-                                    <input type="text" class="form-control" />
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
+                    </div>
+                    <div class="pill-box">
+                        <h3>Box 2</h3>
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Medicine Name">
+                        </div>
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Pills Quantity" />
+                        </div>
+                        <div class="input-group">
+                          <button type="button" class="btn btn-default">Save</button>
+                        </div>
+                    </div>
+                    <div class="pill-box">
+                        <h3>Box 3</h3>
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Medicine Name">
+                        </div>
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Pills Quantity" />
+                        </div>
+                        <div class="input-group">
+                          <button type="button" class="btn btn-default">Save</button>
+                        </div>
+                    </div>
+                </div><!--#pil-boxes-->
+                <div id="schedule-boxes" style="display: none;"> 
+                    <div class="pill-item1">
+                        <h3>Pill Boxe 1</h3>
+                        <div class="med-pill-boxes">
+                            <div class="pill-box">
+                                <h3>Pill</h3>
+                                <div class="dropdown">
+                                    <select>
+                                      <option value="0">Select Device</option>
+                                      <option value="1">Saab</option>
+                                      <option value="2">Opel</option>
+                                      <option value="3">Audi</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="pill-box">
+                                <h3>Date</h3>
+                                <div class="input-group date datepicker">
+                                    <input type="text" class="form-control" data-date-format="YYYY/MM/DD"/>
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
                                 </div>
-                                <div class="input-group">
-                                    <button type="button" class="btn btn-default">
-                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-default">
-                                        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                                    </button>
+                            </div>
+                            <div class="pill-box">
+                                <h3>Frequency</h3>
+                                <div class="btn-group" role="group">
+                                  <button type="button" class="btn btn-default btn-current">Every day</button>
+                                  <button type="button" class="btn btn-default">Every day</button>
+                                  <button type="button" class="btn btn-default">Once in two days</button>
+                                  <button type="button" class="btn btn-default">Once in three days</button>
+                                  <button type="button" class="btn btn-default">once a week</button>
                                 </div>
                             </div>
-                            <div class="time-group">
-                                <div class="input-group date timepicker">
-                                    <input type="text" class="form-control" />
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
+                            <div class="pill-box">
+                                <h3>Time</h3>
+                                <div class="time-group">
+                                    <div class="input-group date timepicker">
+                                        <input type="text" class="form-control" />
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
+                                        </span>
+                                    </div>
+                                    <div class="input-group">
+                                        <button type="button" id="addTimestamp1" class="btn btn-default">
+                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                        </button>
+                                        <button type="button" id="removeTimestamp1" class="btn btn-default">
+                                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="time-group">
+                                    <div class="input-group date timepicker">
+                                        <input type="text" class="form-control" />
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
+                                        </span>
+                                    </div>
+                                    <div class="input-group">
+                                        <button type="button" class="btn btn-default">
+                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                        </button>
+                                        <button type="button" class="btn btn-default">
+                                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pill-box">
+                                  <button type="button" class="btn btn-large btn-current">Save</button>
+                            </div>
+                        </div>
+                    </div><!--.pil-item-->
+                    <div class="pill-item2">
+                        <h3>Pill Boxe 2</h3>
+                        <div class="med-pill-boxes">
+                            <div class="pill-box">
+                                <h3>Pill</h3>
+                                <div class="dropdown">
+                                    <select>
+                                      <option value="0">Select Device</option>
+                                      <option value="1">Saab</option>
+                                      <option value="2">Opel</option>
+                                      <option value="3">Audi</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="pill-box">
+                                <h3>Date</h3>
+                                <div class="input-group date datepicker">
+                                    <input type="text" class="form-control" data-date-format="YYYY/MM/DD"/>
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
                                 </div>
-                                <div class="input-group">
-                                    <button type="button" class="btn btn-default">
-                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-default">
-                                        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                                    </button>
+                            </div>
+                            <div class="pill-box">
+                                <h3>Frequency</h3>
+                                <div class="btn-group" role="group">
+                                  <button type="button" class="btn btn-default btn-current">Every day</button>
+                                  <button type="button" class="btn btn-default">Every day</button>
+                                  <button type="button" class="btn btn-default">Once in two days</button>
+                                  <button type="button" class="btn btn-default">Once in three days</button>
+                                  <button type="button" class="btn btn-default">once a week</button>
                                 </div>
                             </div>
-                        </div>
-                        <div class="pill-box">
-                              <button type="button" class="btn btn-large btn-current">Save</button>
-                        </div>
-                    </div>
-            	</div><!--.pil-item-->
-                <div class="pill-item">
-                    <h3>Pill Boxe 2</h3>
-                    <div class="med-pill-boxes">
-                        <div class="pill-box">
-                            <h3>Pill</h3>
-                            <div class="dropdown">
-                                <select>
-                                  <option value="0">Select Device</option>
-                                  <option value="1">Saab</option>
-                                  <option value="2">Opel</option>
-                                  <option value="3">Audi</option>
-                                </select>
+                            <div class="pill-box">
+                                <h3>Time</h3>
+                                <div class="time-group">
+                                    <div class="input-group date timepicker">
+                                        <input type="text" class="form-control" />
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
+                                        </span>
+                                    </div>
+                                    <div class="input-group">
+                                        <button type="button" class="btn btn-default">
+                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                        </button>
+                                        <button type="button" class="btn btn-default">
+                                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="time-group">
+                                    <div class="input-group date timepicker">
+                                        <input type="text" class="form-control" />
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
+                                        </span>
+                                    </div>
+                                    <div class="input-group">
+                                        <button type="button" class="btn btn-default">
+                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                        </button>
+                                        <button type="button" class="btn btn-default">
+                                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pill-box">
+                                  <button type="button" class="btn btn-large btn-current">Save</button>
                             </div>
                         </div>
-                        <div class="pill-box">
-                            <h3>Date</h3>
-                            <div class="input-group date datepicker">
-                                <input type="text" class="form-control" data-date-format="YYYY/MM/DD"/>
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
+                    </div><!--.pil-item-->
+                    <div class="pill-item3">
+                        <h3>Pill Boxe 3</h3>
+                        <div class="med-pill-boxes">
+                            <div class="pill-box">
+                                <h3>Pill</h3>
+                                <div class="dropdown">
+                                    <select>
+                                      <option value="0">Select Device</option>
+                                      <option value="1">Saab</option>
+                                      <option value="2">Opel</option>
+                                      <option value="3">Audi</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="pill-box">
-                            <h3>Frequency</h3>
-                            <div class="btn-group" role="group">
-                              <button type="button" class="btn btn-default btn-current">Every day</button>
-                              <button type="button" class="btn btn-default">Every day</button>
-                              <button type="button" class="btn btn-default">Once in two days</button>
-                              <button type="button" class="btn btn-default">Once in three days</button>
-                              <button type="button" class="btn btn-default">once a week</button>
-                            </div>
-                        </div>
-                        <div class="pill-box">
-                            <h3>Time</h3>
-                            <div class="time-group">
-                                <div class="input-group date timepicker">
-                                    <input type="text" class="form-control" />
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
+                            <div class="pill-box">
+                                <h3>Date</h3>
+                                <div class="input-group date datepicker">
+                                    <input type="text" class="form-control" data-date-format="YYYY/MM/DD"/>
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
                                 </div>
-                                <div class="input-group">
-                                    <button type="button" class="btn btn-default">
-                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-default">
-                                        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                                    </button>
+                            </div>
+                            <div class="pill-box">
+                                <h3>Frequency</h3>
+                                <div class="btn-group" role="group">
+                                  <button type="button" class="btn btn-default btn-current">Every day</button>
+                                  <button type="button" class="btn btn-default">Every day</button>
+                                  <button type="button" class="btn btn-default">Once in two days</button>
+                                  <button type="button" class="btn btn-default">Once in three days</button>
+                                  <button type="button" class="btn btn-default">once a week</button>
                                 </div>
                             </div>
-                            <div class="time-group">
-                                <div class="input-group date timepicker">
-                                    <input type="text" class="form-control" />
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
-                                    </span>
+                            <div class="pill-box">
+                                <h3>Time</h3>
+                                <div class="time-group">
+                                    <div class="input-group date timepicker">
+                                        <input type="text" class="form-control" />
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
+                                        </span>
+                                    </div>
+                                    <div class="input-group">
+                                        <button type="button" class="btn btn-default">
+                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                        </button>
+                                        <button type="button" class="btn btn-default">
+                                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="input-group">
-                                    <button type="button" class="btn btn-default">
-                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-default">
-                                        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pill-box">
-                              <button type="button" class="btn btn-large btn-current">Save</button>
-                        </div>
-                    </div>
-            	</div><!--.pil-item-->
-                <div class="pill-item">
-                    <h3>Pill Boxe 3</h3>
-                    <div class="med-pill-boxes">
-                        <div class="pill-box">
-                            <h3>Pill</h3>
-                            <div class="dropdown">
-                                <select>
-                                  <option value="0">Select Device</option>
-                                  <option value="1">Saab</option>
-                                  <option value="2">Opel</option>
-                                  <option value="3">Audi</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="pill-box">
-                            <h3>Date</h3>
-                            <div class="input-group date datepicker">
-                                <input type="text" class="form-control" data-date-format="YYYY/MM/DD"/>
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="pill-box">
-                            <h3>Frequency</h3>
-                            <div class="btn-group" role="group">
-                              <button type="button" class="btn btn-default btn-current">Every day</button>
-                              <button type="button" class="btn btn-default">Every day</button>
-                              <button type="button" class="btn btn-default">Once in two days</button>
-                              <button type="button" class="btn btn-default">Once in three days</button>
-                              <button type="button" class="btn btn-default">once a week</button>
-                            </div>
-                        </div>
-                        <div class="pill-box">
-                            <h3>Time</h3>
-                            <div class="time-group">
-                                <div class="input-group date timepicker">
-                                    <input type="text" class="form-control" />
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
-                                    </span>
-                                </div>
-                                <div class="input-group">
-                                    <button type="button" class="btn btn-default">
-                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-default">
-                                        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                                    </button>
+                                <div class="time-group">
+                                    <div class="input-group date timepicker">
+                                        <input type="text" class="form-control" />
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
+                                        </span>
+                                    </div>
+                                    <div class="input-group">
+                                        <button type="button" class="btn btn-default">
+                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                        </button>
+                                        <button type="button" class="btn btn-default">
+                                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="time-group">
-                                <div class="input-group date timepicker">
-                                    <input type="text" class="form-control" />
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
-                                    </span>
-                                </div>
-                                <div class="input-group">
-                                    <button type="button" class="btn btn-default">
-                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-default">
-                                        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                                    </button>
-                                </div>
+                            <div class="pill-box">
+                                  <button type="button" class="btn btn-large btn-current">Save</button>
                             </div>
                         </div>
-                        <div class="pill-box">
-                              <button type="button" class="btn btn-large btn-current">Save</button>
+                    </div><!--.pil-item-->
+                </div><!--#schedule-boxes-->
+                <div id="shopping-card-boxes" class="med-pill-boxes" style="display: none">
+                    <div class="pill-box">
+                        <h3>Box 1</h3>
+                        <div class="input-group">
+                          <label>Medicine Name: </label><b>Analgin</b>
+                        </div>
+                        <div class="input-group">
+                          <label>Pills Quantity: </label><b>3</b>
                         </div>
                     </div>
-            	</div><!--.pil-item-->
-        	</div><!--#schedule-boxes-->
-            <div id="shopping-card-boxes" class="med-pill-boxes" style="display: none">
-            	<div class="pill-box">
-                	<h3>Box 1</h3>
+                    <div class="pill-box">
+                        <h3>Box 2</h3>
+                        <div class="input-group">
+                          <label>Medicine Name: </label><b>Aspirin</b>
+                        </div>
+                        <div class="input-group">
+                          <label>Pills Quantity: </label><b>3</b>
+                        </div>
+                    </div>
+                    <div class="pill-box">
+                        <h3>Box 3</h3>
+                        <div class="input-group">
+                          <label>Medicine Name: </label><b>Askofen</b>
+                        </div>
+                        <div class="input-group">
+                          <label>Pills Quantity: </label><b>3</b>
+                        </div>
+                    </div>
+                </div><!--#shopping-card-boxes-->
+                <div id="sos-boxes" class="med-pill-boxes" style="display: none">
+                    <div class="pill-box">
+                        <h3>Box 1</h3>
+                        <div class="input-group">
+                          <label>Medicine Name: </label><b>Askofen</b>
+                        </div>
+                        <div class="input-group">
+                          <button type="button" class="btn btn-default">Extra get</button>
+                        </div>
+                    </div>
+                    <div class="pill-box">
+                        <h3>Box 2</h3>
+                        <div class="input-group">
+                          <label>Medicine Name: </label><b>Askofen</b>
+                        </div>
+                        <div class="input-group">
+                          <button type="button" class="btn btn-default">Extra get</button>
+                        </div>
+                    </div>
+                    <div class="pill-box">
+                        <h3>Box 3</h3>
+                        <div class="input-group">
+                          <label>Medicine Name: </label><b>Askofen</b>
+                        </div>
+                        <div class="input-group">
+                          <button type="button" class="btn btn-default">Extra get</button>
+                        </div>
+                    </div>
+                </div><!--#shopping-card-boxes-->
+            </div><!--med-content-->
+        </div><!--med-container-->
+        </div><!--med-main-->
+        <div class="med-login-page">
+            <div class="login-logo"><img src="images/login_logo.png"></div>
+                <div class="login-box">
+                <h3>Sign In</h3>
                     <div class="input-group">
-                      <label>Medicine Name: </label><b>Analgin</b>
+                        <input type="text" class="form-control" placeholder="Username">
                     </div>
                     <div class="input-group">
-                      <label>Pills Quantity: </label><b>3</b>
-                    </div>
-                </div>
-                <div class="pill-box">
-                	<h3>Box 2</h3>
-                    <div class="input-group">
-                      <label>Medicine Name: </label><b>Aspirin</b>
+                        <input type="password" class="form-control" placeholder="Password" />
                     </div>
                     <div class="input-group">
-                      <label>Pills Quantity: </label><b>3</b>
+                        <button type="button" class="btn btn-default">Sign In</button>
                     </div>
-                </div>
-                <div class="pill-box">
-                	<h3>Box 3</h3>
-                    <div class="input-group">
-                      <label>Medicine Name: </label><b>Askofen</b>
-                    </div>
-                    <div class="input-group">
-                      <label>Pills Quantity: </label><b>3</b>
-                    </div>
-                </div>
-            </div><!--#shopping-card-boxes-->
-            <div id="sos-boxes" class="med-pill-boxes" style="display: none">
-            	<div class="pill-box">
-                	<h3>Box 1</h3>
-                    <div class="input-group">
-                      <label>Medicine Name: </label><b>Askofen</b>
-                    </div>
-                    <div class="input-group">
-                      <button type="button" class="btn btn-default">Extra get</button>
-                    </div>
-                </div>
-                <div class="pill-box">
-                	<h3>Box 2</h3>
-                    <div class="input-group">
-                      <label>Medicine Name: </label><b>Askofen</b>
-                    </div>
-                    <div class="input-group">
-                      <button type="button" class="btn btn-default">Extra get</button>
-                    </div>
-                </div>
-                <div class="pill-box">
-                	<h3>Box 3</h3>
-                    <div class="input-group">
-                      <label>Medicine Name: </label><b>Askofen</b>
-                    </div>
-                    <div class="input-group">
-                      <button type="button" class="btn btn-default">Extra get</button>
-                    </div>
-                </div>
-            </div><!--#shopping-card-boxes-->
-        </div><!--med-content-->
-    </div><!--med-container-->
+            </div>
+        </div><!--med-login-page-->
 </body>
 </html>
