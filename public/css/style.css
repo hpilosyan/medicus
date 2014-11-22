@@ -1,3 +1,6 @@
+.timepicker a {
+	color: #660b10;
+}
 .med-header {
 	height: 56px;
 	line-height: 56px;
@@ -46,12 +49,12 @@
 }
 .med-header .dropdown {
 	position: absolute;
-	line-height: 30px;
+	line-height: 35px;
     right: 270px;
-    top: 11px;
+    top: 12px;
 }
-.btn-default {
-	background: #ffffff;
+.dropdown {
+	color: #616161;
 }
 .med-container {
 	position: absolute;
@@ -69,6 +72,8 @@
 	width: 300px;
 	background: #ab0027;
 	padding-top: 4px;
+	position: fixed;
+    top: 56px;
 }
 .med-menu ul {
 	list-style: none;
@@ -143,4 +148,101 @@
 }
 .med-menu ul li.sos span:hover:after, .med-menu ul li.sos span.cur:after {
 	background-image: url(/images/sos_icon_cur.png);
+}
+.med-content {
+	position: absolute;
+	left: 348px;
+	right: 48px;
+	bottom: 48px;
+	top: 0;
+	color: #616161;
+}
+h1.cur-title {
+    border-bottom: 1px solid #660b10;
+    font-size: 24px;
+	font-weight: 600;
+    line-height: 50px;
+    margin-top: 50px;
+	margin-bottom: 20px;
+    padding: 0 30px;
+	color: #660b10;
+}
+.selectboxit .selectboxit-arrow-container .selectboxit-arrow {
+	top: 40% !important;
+	border-top: 4px solid #660b10;
+}
+.selectboxit-btn {
+	background: #ffffff !important;
+}
+.selectboxit-list > .selectboxit-focus > .selectboxit-option-anchor {
+	background: #660b10 !important;
+}
+.med-pill-boxes {
+	border-top: 1px solid rgba(0, 0, 0, 0.12);
+	box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+	background: #fafafa;
+	overflow: hidden;
+}
+.med-pill-boxes h3 {
+	margin: 0;
+	font-size: 20px;
+	line-height: 30px;	
+	font-weight: 500;
+	float: left;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 35px;
+    margin: 0;
+    width: 80px;
+}
+.pill-box {
+	padding: 20px 30px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+	overflow: hidden;
+}
+.pill-box .input-group {
+	float: left;
+	margin-right: 10px;
+}
+.pill-box .input-group:nth-of-type(2) {
+    width: 110px;
+}
+#schedule-boxes .med-pill-boxes .input-group {
+	width: 200px;
+	margin: 10px;
+}
+#schedule-boxes > h3 {
+	float: none;
+	display: block;
+	width: auto;
+	padding: 0 30px 10px;
+	color: #660b10;
+	font-size: 20px
+}
+#schedule-boxes .pill-box {
+    padding: 10px 30px;
+    overflow: visible;
+	float: left;
+	width: 100%;
+	box-sizing: border-box;
+}
+#schedule-boxes .med-pill-boxes h3 {
+	margin: 10px 0;
+}
+.time-group {
+	overflow: hidden;
+	margin-left: 80px;
+}
+.med-pill-boxes .time-group:nth-of-type(1) {
+    margin: 0;
+}
+#schedule-boxes .dropdown {
+	margin-left: 90px;
+    margin-top: 12px;
+}
+.bootstrap-datetimepicker-widget td.active, .bootstrap-datetimepicker-widget td.active:hover, .btn-primary {
+	background: #660b10 !important;
+}
+.btn-primary {
+	border-color: #660b10 !important;
 }

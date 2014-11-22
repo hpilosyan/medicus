@@ -7,9 +7,18 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="http://gregfranko.com/jquery.selectBoxIt.js/css/jquery.selectBoxIt.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css" />
+
 <!-- Latest compiled and minified JavaScript -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+<script src="http://gregfranko.com/jquery.selectBoxIt.js/js/jquery.selectBoxIt.min.js"></script>
+<script type="text/javascript" src="http://eonasdan.github.io/bootstrap-datetimepicker/scripts/moment.js"></script>
+<script type="text/javascript" src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/master/src/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="http://eonasdan.github.io/bootstrap-datetimepicker/scripts/ru.js"></script>
+
 <script src="scripts/script.js"></script>
 <title>Medicus</title>
 </head>
@@ -18,16 +27,12 @@
     	<div class="med-logo"><img src="images/logo.png"></div>
         <div class="med-user">Y. Amirkhanyan</div>
         <div class="dropdown">
-          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-            Dropdown
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-          </ul>
+            <select>
+              <option value="0">Select Device</option>
+              <option value="1">Saab</option>
+              <option value="2">Opel</option>
+              <option value="3">Audi</option>
+            </select>
         </div>
         <div class="med-log">
           <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>Log Out
@@ -51,7 +56,103 @@
             </ul>
         </div><!--med-menu-->
         <div class="med-content">
-        	
+        	<h1 class="cur-title">Pills</h1>
+            <div id="pil-boxes" class="med-pill-boxes" style="display: none">
+            	<div class="pill-box">
+                	<h3>Box 1</h3>
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Medicine Name">
+                    </div>
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Pills Quantity" />
+                    </div>
+                    <div class="input-group">
+                      <button type="button" class="btn btn-default">Save</button>
+                    </div>
+                </div>
+                <div class="pill-box">
+                	<h3>Box 2</h3>
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Medicine Name">
+                    </div>
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Pills Quantity" />
+                    </div>
+                    <div class="input-group">
+                      <button type="button" class="btn btn-default">Save</button>
+                    </div>
+                </div>
+                <div class="pill-box">
+                	<h3>Box 3</h3>
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Medicine Name">
+                    </div>
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Pills Quantity" />
+                    </div>
+                    <div class="input-group">
+                      <button type="button" class="btn btn-default">Save</button>
+                    </div>
+                </div>
+            </div><!--#pil-boxes-->
+            <div id="schedule-boxes"> 
+                <h3>Pill Boxe 1</h3>
+                <div class="med-pill-boxes">
+                	<div class="pill-box">
+                        <h3>Pill</h3>
+                        <div class="dropdown">
+                            <select>
+                              <option value="0">Select Device</option>
+                              <option value="1">Saab</option>
+                              <option value="2">Opel</option>
+                              <option value="3">Audi</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="pill-box">
+                        <h3>Date</h3>
+                        <div class="input-group date datepicker">
+                            <input type="text" class="form-control" data-date-format="YYYY/MM/DD"/>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="pill-box">
+                        <h3>Time</h3>
+                        <div class="time-group">
+                            <div class="input-group date timepicker">
+                                <input type="text" class="form-control" />
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
+                                </span>
+                            </div>
+                            <div class="input-group">
+                                <button type="button" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="time-group">
+                            <div class="input-group date timepicker">
+                                <input type="text" class="form-control" />
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
+                                </span>
+                            </div>
+                            <div class="input-group">
+                                <button type="button" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        	</div><!--#schedule-boxes-->
         </div><!--med-content-->
     </div><!--med-container-->
 </body>
