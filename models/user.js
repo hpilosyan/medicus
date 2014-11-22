@@ -10,7 +10,7 @@ module.exports = {
   get_user: function() {
     var deferred = promise.defer();
 
-    db.collection('user').find().toArray(function (err, items) {
+    db.collection('user').findOne(function (err, items) {
       if (err) {
         deferred.reject(err);
       } else {
