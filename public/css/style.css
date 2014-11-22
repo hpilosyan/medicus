@@ -1,0 +1,146 @@
+.med-header {
+	height: 56px;
+	line-height: 56px;
+	position: fixed;
+	left: 0;
+	right: 0;
+	background: #660b10;
+	color: #ffffff;
+	font-size: 16px;
+	z-index: 10;
+}
+.med-header:before {
+	box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+	content: "";
+	height: 56px;
+	left: -2%;
+	position: fixed;
+	width: 104%;
+	will-change: top,left;
+}
+.med-logo {
+	float: left;
+	margin: 0 30px;
+}
+.med-logo img {
+	height: 30px;
+}
+.med-user {
+	float: right;
+	margin-right: 140px;
+}
+.med-log  {
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    right: 30px;
+    top: 8px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: bold;
+}
+.med-log  > span {
+	font-size: 25px;
+	margin-right: 8px;
+	top: 6px;
+}
+.med-header .dropdown {
+	position: absolute;
+	line-height: 30px;
+    right: 270px;
+    top: 11px;
+}
+.btn-default {
+	background: #ffffff;
+}
+.med-container {
+	position: absolute;
+	top: 56px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+.med-menu {
+	box-shadow: -2px 0 8px #333333 inset;
+	position: absolute;
+	left: 0;
+	top: -2px ;
+	bottom: 0;
+	width: 300px;
+	background: #ab0027;
+	padding-top: 4px;
+}
+.med-menu ul {
+	list-style: none;
+	margin: 50px 0 50px 30px;
+	padding: 0;
+}
+.med-menu ul li {
+	margin-bottom: 30px;
+}
+.med-menu ul li span {
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 50px;
+    padding-left: 60px;
+	position: relative;
+	display: block;
+	height: 50px;
+	cursor: pointer;
+	text-shadow: 1px 1px #333;
+}
+.med-menu ul li span.cur, .med-menu ul li span:hover {
+	color: #660b10;
+
+}
+.med-menu ul li span:after {
+	content: "";
+	width: 50px;
+	height: 50px;
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+	background-position: center;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.med-menu ul li span.cur:before {
+    border-bottom: 18px solid transparent;
+    border-right: 18px solid #ffffff;
+    border-top: 18px solid transparent;
+    content: "";
+    display: block;
+    height: 0;
+    margin-top: -15px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 0;
+}
+.med-menu ul li.pills span:after {
+	background-image: url(/images/pills_icon.png);
+}
+.med-menu ul li.schedule span:after {
+	background-image: url(/images/schedule_icon.png);
+}
+.med-menu ul li.shopping-card span:after {
+	background-image: url(/images/shopping_card_icon.png);
+}
+.med-menu ul li.sos span:after {
+	background-image: url(/images/sos_icon.png);
+}
+
+.med-menu ul li.pills span:hover:after, .med-menu ul li.pills span.cur:after {
+	background-image: url(/images/pills_icon_cur.png);
+}
+.med-menu ul li.schedule span:hover:after, .med-menu ul li.schedule span.cur:after {
+	background-image: url(/images/schedule_icon_cur.png);
+}
+.med-menu ul li.shopping-card span:hover:after, .med-menu ul li.shopping-card span.cur:after {
+	background-image: url(/images/shopping_card_icon_cur.png);
+}
+.med-menu ul li.sos span:hover:after, .med-menu ul li.sos span.cur:after {
+	background-image: url(/images/sos_icon_cur.png);
+}
