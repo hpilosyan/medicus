@@ -261,3 +261,17 @@ h1.cur-title {
 .pill-item {
 	margin-bottom: 40px;
 }
+.input-group label, .input-group b {
+	line-height: 35px;
+	font-size: 16px;
+}
+.input-group label {
+	margin-right: 10px;
+}
+.input-group b {
+	color: #660b10;
+}
+#shopping-card-boxes .input-group {
+	width: auto;
+	margin-right: 15px;
+}
