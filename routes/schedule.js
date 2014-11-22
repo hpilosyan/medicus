@@ -2,16 +2,22 @@ var express = require('express');
 var schedule = require('../models/schedule');
 var router = express.Router();
 
-router.get('/:device_token', function(req, res, next) {
-  console.log(req.params);
+router.post('/:device_token', function(req, res, next) {
   var device_token = req.params.device_token;
-  var box = req.body.box;
-  var timestamps = req.body.timestamps;
 
-  schedule.create_schedule().then(function() {
-    res.json(req.params);
+  var new_schedule = req.body;
+
+  schedule.create_schedule(device_token, new_schedule).then(function(result) {
+    res.json(result);
   });
+});
 
+router.get('/:device_token', function(req, res, next) {
+  var device_token = req.params.device_token;
+
+  schedule.get_schedule(device_token).then(function(schedule) {
+    res.json(schedule);
+  });
 });
 
 module.exports = router;

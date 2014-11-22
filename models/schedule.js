@@ -5,14 +5,28 @@ var promise = require('node-promise');
 var _ = require('underscore');
 
 module.exports = {
-  create_schedule: function() {
+  create_schedule: function(device_token, schedule) {
     var deferred = promise.defer();
 
-    db.collection('user').find().toArray(function (err, items) {
+    db.collection('device').update({token: device_token}, {'$push': {schedule: schedule}}, function (err, result) {
       if (err) {
         deferred.reject(err);
       } else {
-        deferred.resolve(items);
+        deferred.resolve(result);
+      }
+    });
+
+    return deferred.promise;
+  },
+
+  get_schedule: function(device_token) {
+    var deferred = promise.defer();
+
+    db.collection('device').findOne({token: device_token}, function(err, result) {
+      if (err) {
+        deferred.reject(err);
+      } else {
+        deferred.resolve(result.schedule);
       }
     });
 
