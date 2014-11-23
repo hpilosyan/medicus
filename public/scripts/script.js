@@ -47,11 +47,11 @@ function attachEvents()
 	//Schedule
 	$("#addTimestamp1").click(function(){onAddTimestampClick(BOX_1)});
 	$("#removeTimestamp1").click(function(){onremoveTimestampClick(BOX_1)});
-	$("#saveScheduleButton1").click(function(){onSaveScheduleButtonClick(BOX_1)});
+	$(" .pill-item1 .btn-large").click(function(){onSaveScheduleButtonClick(BOX_1)});
 	
 	$("#addTimestamp2").click(function(){onAddTimestampClick(BOX_2)});
 	$("#removeTimestamp2").click(function(){onremoveTimestampClick(BOX_2)});
-	$("#saveScheduleButton2").click(function(){onSaveScheduleButtonClick(BOX_2)});
+	$(".pill-item2 .btn-large").click(function(){onSaveScheduleButtonClick(BOX_2)});
 	
 	$("#addTimestamp3").click(function(){onAddTimestampClick(BOX_3)});
 	$("#removeTimestamp3").click(function(){onremoveTimestampClick(BOX_3)});
@@ -65,7 +65,7 @@ function attachEvents()
 
 function getDevicesList()
 {
-	$.get( "http://medicus-dev.herokuapp.com/api/v1/user", function( data ) {
+	$.get( "http://172.24.20.30:3000/api/v1/old/user", function( data ) {
   		currentUser=data;
 		if(data && data.devices)
 		{
@@ -223,19 +223,50 @@ function onremoveTimestampClick(selectedBox)
 
 function onSaveScheduleButtonClick(selectedBox)
 {
+	var deviceToken=$(".med-header select").val();
 	//TODO
 	switch(selectedBox)
 	{
 		case BOX_1:
 		{
+			
 			var box1Id=1;
 			//Get medicine id
-			var medicine1Id=parseInt($(".pill-item1 select").val());
+			var medicine1Id=$(".pill-item1 select").val();
 			//Get interval
 			var interval1=parseInt($(".pill-item1 .btn-current").attr("class").split(" ")[2].split("-")[1]);
+			var quantity1=parseInt($(".pill-item1 .sc-quantity").val());
+			var date1=(new Date($(".pill-item1 .sc-date").val())).getTime();
+			//console.log($(".pill-item1 .sc-date").val());
+			var timeStamps1=[];
+			$(".pill-item1 .sc-time").each(function(){
+				var time=(new Date($(".pill-item1 .sc-date").val()+' '+$(this).val())).getTime();
+				timeStamps1.push(time);
+			});
 			
-			//TODO: Get timestamps
+			//Construct request object
+			var saveRequest={};
+			saveRequest.box=box1Id;
+			saveRequest.pill_name=medicine1Id;
+			saveRequest.amount=quantity1;
+			saveRequest.time={};
+			saveRequest.time.days_interval=interval1;
+			saveRequest.time.timestamps=timeStamps1;
 			
+			var requestString=JSON.stringify(saveRequest);
+			$.ajax({
+				url:"http://172.24.20.30:3000/api/v1/old/schedule/"+deviceToken,
+				data:requestString,
+				type:"POST",
+				contentType:"application/json",
+				success:function(result){
+					alert(result);
+				}
+			});
+			
+			//{"box":1,"time":{"days_interval":2,"timestamps":[84589645,845896455]},"pill_name":"Vazolong N","amount":45}
+			
+						
 			//TODO: ajax request to save
 			break;
 		}
@@ -243,12 +274,37 @@ function onSaveScheduleButtonClick(selectedBox)
 		{
 			var box2Id=2;
 			//Get medicine id
-			var medicine2Id=parseInt($("#medicineSelect2").val());
+			var medicine2Id=$(".pill-item2 select").val();
 			//Get interval
-			var interval2=$("#interval2").val();
+			var interval2=parseInt($(".pill-item2 .btn-current").attr("class").split(" ")[2].split("-")[1]);
+			var quantity2=parseInt($(".pill-item2 .sc-quantity").val());
+			var date2=(new Date($(".pill-item2 .sc-date").val())).getTime();
+			var timeStamps2=[];
+			$(".pill-item2 .sc-time").each(function(){
+				var time=(new Date($(".pill-item2 .sc-date").val()+' '+$(this).val())).getTime();
+				timeStamps2.push(time);
+			});
 			
-			//TODO: Get timestamps
+			//Construct request object
+			var saveRequest={};
+			saveRequest.box=box2Id;
+			saveRequest.pill_name=medicine2Id;
+			saveRequest.amount=quantity2;
+			saveRequest.time={};
+			saveRequest.time.days_interval=interval2;
+			saveRequest.time.timestamps=timeStamps2;
 			
+			var requestString=JSON.stringify(saveRequest);
+			$.ajax({
+				url:"http://172.24.20.30:3000/api/v1/old/schedule/"+deviceToken,
+				data:requestString,
+				type:"POST",
+				contentType:"application/json",
+				success:function(result){
+					alert(result);
+				}
+			});
+						
 			//TODO: ajax request to save
 			break;
 		}
@@ -256,11 +312,17 @@ function onSaveScheduleButtonClick(selectedBox)
 		{
 			var box3Id=3;
 			//Get medicine id
-			var medicine3Id=parseInt($("#medicineSelect3").val());
+			var medicine3Id=$(".pill-item3 select").val();
 			//Get interval
-			var interval3=$("#interval3").val();
+			var interval3=parseInt($(".pill-item3 .btn-current").attr("class").split(" ")[2].split("-")[1]);
+			var quantity3=parseInt($(".pill-item13 .sc-quantity").val());
+			var date3=(new Date($(".pill-item3 .sc-date").val())).getTime();
+			var timeStamps3=[];
+			$(".pill-item3 .sc-time").each(function(){
+				var time=(new Date($(this).val())).getTime();
+				timeStamps3.push(time);
+			});
 			
-			//TODO: Get timestamps
 			
 			//TODO: ajax request to save
 			break;
