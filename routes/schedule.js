@@ -1,5 +1,6 @@
 var express = require('express');
 var schedule = require('../models/schedule');
+var history = require('../models/history');
 
 var imp_request = require('../imp_request');
 var router = express.Router();
@@ -16,6 +17,9 @@ router.post('/:device_token', function(req, res, next) {
     }, function(err) {
       next(new Error("Can't access device!"));
     });
+
+    // Add to history
+    history.add_history_item(new_schedule);
   });
 });
 

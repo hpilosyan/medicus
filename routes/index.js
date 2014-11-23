@@ -3,6 +3,7 @@ var notifications = require('./notifications');
 var users = require('./users');
 var schedule = require('./schedule');
 var pills = require('./pills');
+var history = require('./history');
 var oauthserver = require('oauth2-server');
 var auth_model = require('../models/auth');
 
@@ -21,6 +22,7 @@ module.exports = function (app) {
   router.use('/user', users);
   router.use('/schedule', schedule);
   router.use('/pill', pills);
+  router.use('/history', history);
   router.use('/notify', notifications);
 
   router.use(app.oauth.errorHandler());
