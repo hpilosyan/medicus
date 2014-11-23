@@ -19,11 +19,18 @@ module.exports = function (app) {
   // This route is called for authentication (getting access token)
   router.all('/oauth/token', app.oauth.grant());
 
-  router.use('/user', users);
-  router.use('/schedule', schedule);
-  router.use('/pill', pills);
-  router.use('/history', history);
+  // TMP
+  router.use('/old/user', users);
+  router.use('/old/schedule', schedule);
+  router.use('/old/pill', pills);
+  router.use('/old/history', history);
+  // END TMP
+
   router.use('/notify', notifications);
+  router.use('/user', app.oauth.authorise(), users);
+  router.use('/schedule', app.oauth.authorise(), schedule);
+  router.use('/pill', app.oauth.authorise(), pills);
+  router.use('/history', app.oauth.authorise(), history);
 
   router.use(app.oauth.errorHandler());
 
