@@ -9,7 +9,7 @@ router.get('/:box', function(req, res) {
 
   user.get_user().then(function (user) {
     var tokens = user.mobile_device_token;
-    send_notification(tokens[1], box, res);
+    send_notification(tokens[0], box, res);
     /*for (var i = 0; i < tokens.length; i++) {
 
       console.log(tokens[i]);
