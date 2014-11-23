@@ -8,7 +8,7 @@ function send_schedule(schedule) {
 
   request.post(
     {
-      url: 'https://agent.electricimp.com/NB5XyYGwJkmr/update',
+      url: 'https://agent.electricimp.com/Z4NF3ZQRf552/update',
       json: true,
       body: schedule
     },
