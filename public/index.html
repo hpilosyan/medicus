@@ -23,7 +23,7 @@
 <title>Medicus</title>
 </head>
 <body>
-	<div class="med-main" style="display: block;">   
+	<div class="med-main" style="display: none;">
         <div class="med-header">
             <div class="med-logo"><img src="images/logo.png"></div>
             <div class="med-user">Y. Amirkhanyan</div>
@@ -55,7 +55,7 @@
             </div><!--med-menu-->
             <div class="med-content">
                 <h1 class="cur-title">Pills</h1><!--popxvpx!!!!!!!!!!!!!!-->
-                
+
                 <div id="pil-boxes" class="med-pill-boxes" style="display: block">
                     <div class="pill-box">
                         <h3>Box 1</h3>
@@ -85,7 +85,7 @@
                         </div>
                     </div>
                 </div><!--#pil-boxes-->
-                <div id="schedule-boxes" style="display: none;"> 
+                <div id="schedule-boxes" style="display: none;">
                     <div class="pill-item1 pill-item">
                         <h3>Pill Boxe 1</h3>
                         <div class="med-pill-boxes">
@@ -102,7 +102,7 @@
                                 <div class="input-group">
                                 	<input type="text" class="form-control sc-quantity" placeholder="Pills Quantity" />
                                 </div>
-                            </div>                     
+                            </div>
                             <div class="pill-box">
                                 <h3>Date</h3>
                                 <div class="input-group date datepicker">
@@ -160,7 +160,7 @@
                                 <div class="input-group">
                                 	<input type="text" class="form-control  sc-quantity" placeholder="Pills Quantity" />
                                 </div>
-                            </div> 
+                            </div>
                             <div class="pill-box">
                                 <h3>Date</h3>
                                 <div class="input-group date datepicker">
@@ -196,7 +196,7 @@
                                         </button>
                                     </div>
                                 </div>
-                                
+
                             </div>
                             <div class="pill-box">
                                   <button type="button" class="btn btn-large btn-current">Save</button>
@@ -219,7 +219,7 @@
                                 <div class="input-group">
                                 	<input type="text" class="form-control sc-quantity" placeholder="Pills Quantity" />
                                 </div>
-                            </div> 
+                            </div>
                             <div class="pill-box">
                                 <h3>Date</h3>
                                 <div class="input-group date datepicker">
@@ -255,7 +255,7 @@
                                         </button>
                                     </div>
                                 </div>
-                                
+
                             </div>
                             <div class="pill-box">
                                   <button type="button" class="btn btn-large btn-current">Save</button>
@@ -324,18 +324,18 @@
             </div><!--med-content-->
         </div><!--med-container-->
         </div><!--med-main-->
-        <div class="med-login-page"  style="display: none;">
+        <div class="med-login-page">
             <div class="login-logo"><img src="images/login_logo.png"></div>
                 <div class="login-box">
                 <h3>Sign In</h3>
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Username">
+                        <input type="text" class="form-control" placeholder="Username" id="username">
                     </div>
                     <div class="input-group">
-                        <input type="password" class="form-control" placeholder="Password" />
+                        <input type="password" class="form-control" placeholder="Password" id="password" />
                     </div>
                     <div class="input-group">
-                        <button type="button" class="btn btn-default">Sign In</button>
+                        <button type="button" class="btn btn-default" id="login">Sign In</button>
                     </div>
             </div>
         </div><!--med-login-page-->

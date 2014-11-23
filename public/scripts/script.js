@@ -7,8 +7,8 @@ var timestamp2Count=1;
 var timestamp3Count=1;
 
 var currentUser;
-
-$(function(){	
+var base_url = "http://medicus-dev.herokuapp.com/api/v1";
+$(function(){
 	 $('.datepicker').datetimepicker({
     	 pickTime: false
      });
@@ -18,21 +18,24 @@ $(function(){
 	getDevicesList();
 	getMedicineListForAllBoxes();
 	attachEvents();
-	
+
 	  $('.pill-item2 .sc-days button').on( "click", function() {
 		$('.pill-item2 .sc-days button').removeClass( "btn-current" );
 	  	$( this ).addClass( "btn-current" );
 	  });
-	  
+
 	  $('.pill-item3 .sc-days button').on( "click", function() {
 		$('.pill-item3 .sc-days button').removeClass( "btn-current" );
 	  	$( this ).addClass( "btn-current" );
 	  });
-	  	  
+
 	  $('.pill-item1 .sc-days button').on( "click", function() {
 		$('.pill-item1 .sc-days button').removeClass( "btn-current" );
 	  	$( this ).addClass( "btn-current" );
 	  });
+	  $('#login').on('click', function(){
+	  	authenticate();
+	  })
 });
 
 function attachEvents()
@@ -43,20 +46,20 @@ function attachEvents()
 	$("li.schedule").click(onScheduleTabClick);
 	$("li.shopping-card").click(onShoppingCardTabClick);
 	$("li.sos").click(onSosTabClick);
-	
+
 	//Schedule
 	$("#addTimestamp1").click(function(){onAddTimestampClick(BOX_1)});
 	$("#removeTimestamp1").click(function(){onremoveTimestampClick(BOX_1)});
 	$(" .pill-item1 .btn-large").click(function(){onSaveScheduleButtonClick(BOX_1)});
-	
+
 	$("#addTimestamp2").click(function(){onAddTimestampClick(BOX_2)});
 	$("#removeTimestamp2").click(function(){onremoveTimestampClick(BOX_2)});
 	$(".pill-item2 .btn-large").click(function(){onSaveScheduleButtonClick(BOX_2)});
-	
+
 	$("#addTimestamp3").click(function(){onAddTimestampClick(BOX_3)});
 	$("#removeTimestamp3").click(function(){onremoveTimestampClick(BOX_3)});
 	$("#saveScheduleButton3").click(function(){onSaveScheduleButtonClick(BOX_3)});
-		
+
 	//Pills
 	$("#savePillsButton1").click(function(){onSavePillsButtonClick(BOX_1)});
 	$("#savePillsButton2").click(function(){onSavePillsButtonClick(BOX_2)});
@@ -76,7 +79,7 @@ function getDevicesList()
 				var option="<option value='"+devicesList[i].token+"'>"+devicesList[i].name+"</option>";
 				$("div.dropdown > select").append(option);
 			}
-			
+
 			$(".med-header select").selectBoxIt();
 		}
 		else
@@ -91,7 +94,7 @@ function getMedicineListForAllBoxes()
 	var box1Id=parseInt($("#box1_id").val());
 	var box2Id=parseInt($("#box2_id").val());
 	var box3Id=parseInt($("#box3_id").val());
-	
+
 	//TODO:ajax calls to get medicines by box id
 }
 
@@ -100,34 +103,34 @@ function onDevicesSelectChange(event)
 {
 	 //Fill schedule fields
 	 var pills1 = currentUser.devices[0].pills
-	 var pill1Select = ""; 
+	 var pill1Select = "";
 		$.each( pills1, function( key, value ) {
 			if (typeof value != 'undefined') {
 				pill1Select += '<option vlaue="'+value+'">'+value+'</option>';
 			}
 		});
-		
+
 	 $(".pill-item1 .dropdown select").html(pill1Select);
 	 $(".pill-item1 .dropdown select").selectBoxIt();
-	 
+
 	 $(".pill-item2 .dropdown select").html(pill1Select);
 	 $(".pill-item2 .dropdown select").selectBoxIt();
-	 
+
 	 $(".pill-item3 .dropdown select").html(pill1Select);
 	 $(".pill-item3 .dropdown select").selectBoxIt();
-	 
+
 	 $(".pill-item1 .sc-quantity").val(currentUser.devices[0].schedule[0].amount);
 	 $(".pill-item2 .sc-quantity").val(currentUser.devices[0].schedule[1].amount);
 	 $(".pill-item3 .sc-quantity").val(currentUser.devices[0].schedule[2].amount);
-	 
+
 	 $(".pill-item1 .sc-date").val(moment(currentUser.devices[0].schedule[0].time.timestamps[0]).format('YYYY/MM/DD'));
 	 $(".pill-item2 .sc-date").val(moment(currentUser.devices[0].schedule[1].time.timestamps[0]).format('YYYY/MM/DD'));
 	 $(".pill-item3 .sc-date").val(moment(currentUser.devices[0].schedule[2].time.timestamps[0]).format('YYYY/MM/DD'));
-	 
+
 	 $(".pill-item1 .sc-time").val(moment(currentUser.devices[0].schedule[0].time.timestamps[0]).format('HH:mm'));
 	 $(".pill-item2 .sc-time").val(moment(currentUser.devices[0].schedule[1].time.timestamps[0]).format('HH:mm'));
-	 $(".pill-item3 .sc-time").val(moment(currentUser.devices[0].schedule[2].time.timestamps[0]).format('HH:mm'));	 
-	 
+	 $(".pill-item3 .sc-time").val(moment(currentUser.devices[0].schedule[2].time.timestamps[0]).format('HH:mm'));
+
 	 $('.pill-item1 .datepicker').datetimepicker({
     	 pickTime: false
      });
@@ -137,13 +140,13 @@ function onDevicesSelectChange(event)
 	 $('.pill-item3 .datepicker').datetimepicker({
     	 pickTime: false
      });
-	 
+
 	  $('.pill-item1 .sc-days button').removeClass( "btn-current" );
-	  $('.pill-item1 .sc-days .scd-'+currentUser.devices[0].schedule[0].time.days_interval).addClass( "btn-current" );	  
-	  
+	  $('.pill-item1 .sc-days .scd-'+currentUser.devices[0].schedule[0].time.days_interval).addClass( "btn-current" );
+
 	  $('.pill-item2 .sc-days button').removeClass( "btn-current" );
 	  $('.pill-item2 .sc-days .scd-'+currentUser.devices[0].schedule[1].time.days_interval).addClass( "btn-current" );
-	  	  
+
 	  $('.pill-item3 .sc-days button').removeClass( "btn-current" );
 	  $('.pill-item3 .sc-days .scd-'+currentUser.devices[0].schedule[2].time.days_interval).addClass( "btn-current" );
 
@@ -229,7 +232,7 @@ function onSaveScheduleButtonClick(selectedBox)
 	{
 		case BOX_1:
 		{
-			
+
 			var box1Id=1;
 			//Get medicine id
 			var medicine1Id=$(".pill-item1 select").val();
@@ -243,7 +246,7 @@ function onSaveScheduleButtonClick(selectedBox)
 				var time=(new Date($(".pill-item1 .sc-date").val()+' '+$(this).val())).getTime();
 				timeStamps1.push(time);
 			});
-			
+
 			//Construct request object
 			var saveRequest={};
 			saveRequest.box=box1Id;
@@ -252,10 +255,10 @@ function onSaveScheduleButtonClick(selectedBox)
 			saveRequest.time={};
 			saveRequest.time.days_interval=interval1;
 			saveRequest.time.timestamps=timeStamps1;
-			
+
 			var requestString=JSON.stringify(saveRequest);
 			$.ajax({
-				url:"http://172.24.20.30:3000/api/v1/old/schedule/"+deviceToken,
+				url: base_url + "/schedule/"+deviceToken,
 				data:requestString,
 				type:"POST",
 				contentType:"application/json",
@@ -263,10 +266,10 @@ function onSaveScheduleButtonClick(selectedBox)
 					alert(result);
 				}
 			});
-			
+
 			//{"box":1,"time":{"days_interval":2,"timestamps":[84589645,845896455]},"pill_name":"Vazolong N","amount":45}
-			
-						
+
+
 			//TODO: ajax request to save
 			break;
 		}
@@ -284,7 +287,7 @@ function onSaveScheduleButtonClick(selectedBox)
 				var time=(new Date($(".pill-item2 .sc-date").val()+' '+$(this).val())).getTime();
 				timeStamps2.push(time);
 			});
-			
+
 			//Construct request object
 			var saveRequest={};
 			saveRequest.box=box2Id;
@@ -293,10 +296,10 @@ function onSaveScheduleButtonClick(selectedBox)
 			saveRequest.time={};
 			saveRequest.time.days_interval=interval2;
 			saveRequest.time.timestamps=timeStamps2;
-			
+
 			var requestString=JSON.stringify(saveRequest);
 			$.ajax({
-				url:"http://172.24.20.30:3000/api/v1/old/schedule/"+deviceToken,
+				url:base_url+"/schedule/"+deviceToken,
 				data:requestString,
 				type:"POST",
 				contentType:"application/json",
@@ -304,7 +307,7 @@ function onSaveScheduleButtonClick(selectedBox)
 					alert(result);
 				}
 			});
-						
+
 			//TODO: ajax request to save
 			break;
 		}
@@ -322,8 +325,8 @@ function onSaveScheduleButtonClick(selectedBox)
 				var time=(new Date($(this).val())).getTime();
 				timeStamps3.push(time);
 			});
-			
-			
+
+
 			//TODO: ajax request to save
 			break;
 		}
@@ -341,7 +344,7 @@ function onSavePillsButtonClick(selectedBox)
 			var medicineName=$("#medicineNameInput1").val();
 			//Get pills quantity
 			var pillsQuantity=$("#pillsQuantityInput1").val();
-			
+
 			//TODO: ajax request to save
 			break;
 		}
@@ -352,7 +355,7 @@ function onSavePillsButtonClick(selectedBox)
 			var medicineName=$("#medicineNameInput2").val();
 			//Get pills quantity
 			var pillsQuantity=$("#pillsQuantityInput2").val();
-			
+
 			//TODO: ajax request to save
 			break;
 		}
@@ -363,7 +366,7 @@ function onSavePillsButtonClick(selectedBox)
 			var medicineName=$("#medicineNameInput3").val();
 			//Get pills quantity
 			var pillsQuantity=$("#pillsQuantityInput3").val();
-			
+
 			//TODO: ajax request to save
 			break;
 		}
@@ -377,7 +380,7 @@ function onPillsTabClick()
 	//Highlight
 	$("div.med-menu span").removeClass("cur");
 	$("li.pills > span").addClass("cur");
-	
+
 	$("#schedule-boxes, #shopping-card-boxes, #sos-boxes, #pil-boxes").css("display", "none");
 	$("#pil-boxes").css("display", "block");
 }
@@ -386,11 +389,11 @@ function onScheduleTabClick()
 {
 	//Set the header
 	$("h1.cur-title").html("Schedule");
-	
+
 	//Highlight
 	$("div.med-menu span").removeClass("cur");
 	$("li.schedule > span").addClass("cur");
-	
+
 	$("#schedule-boxes, #shopping-card-boxes, #sos-boxes, #pil-boxes").css("display", "none");
 	$("#schedule-boxes").css("display", "block");
 }
@@ -399,11 +402,11 @@ function onShoppingCardTabClick()
 {
 	//Set the header
 	$("h1.cur-title").html("Shopping Card");
-	
+
 	//Highlight
 	$("div.med-menu span").removeClass("cur");
 	$("li.shopping-card > span").addClass("cur");
-	
+
 	$("#schedule-boxes, #shopping-card-boxes, #sos-boxes, #pil-boxes").css("display", "none");
 	$("#shopping-card-boxes").css("display", "block");
 }
@@ -411,11 +414,41 @@ function onSosTabClick()
 {
 	//Set the header
 	$("h1.cur-title").html("SOS");
-	
+
 	//Highlight
 	$("div.med-menu span").removeClass("cur");
 	$("li.sos > span").addClass("cur");
-	
+
 	$("#schedule-boxes, #shopping-card-boxes, #sos-boxes, #pil-boxes").css("display", "none");
 	$("#sos-boxes").css("display", "block");
+}
+
+function authenticate () {
+	var client_id = "hayk";
+    var client_secret = "my_secret";
+
+    var base64_encoded = btoa(client_id + ":" + client_secret);
+    $.ajax(base_url + '/oauth/token', {
+        type: 'POST',
+        headers: {
+            Authorization: 'Basic ' + base64_encoded
+        },
+        data: {
+            grant_type: 'password',
+            username: $('#username').val(),
+            password: $('#password').val()
+        }
+    }).done(function(resp) {
+        // Log the response, which contains access_token
+        $('.med-main').show();
+        $('.med-login-page').hide();
+
+        // We'll need to send access token with each subsequent request
+        $.ajaxSetup({
+            headers: {
+                Authorization: 'Bearer ' + resp.access_token
+            }
+        });
+
+    });
 }
