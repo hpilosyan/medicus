@@ -6,23 +6,39 @@ var timestamp1Count=1;
 var timestamp2Count=1;
 var timestamp3Count=1;
 
+var currentUser;
+
 $(function(){	
-	$('.datepicker').datetimepicker({
+	 $('.datepicker').datetimepicker({
     	 pickTime: false
-    });
+     });
 	$('.timepicker').datetimepicker({
     	pickDate: false
     });
-	
 	getDevicesList();
 	getMedicineListForAllBoxes();
 	attachEvents();
+	
+	  $('.pill-item2 .sc-days button').on( "click", function() {
+		$('.pill-item2 .sc-days button').removeClass( "btn-current" );
+	  	$( this ).addClass( "btn-current" );
+	  });
+	  
+	  $('.pill-item3 .sc-days button').on( "click", function() {
+		$('.pill-item3 .sc-days button').removeClass( "btn-current" );
+	  	$( this ).addClass( "btn-current" );
+	  });
+	  	  
+	  $('.pill-item1 .sc-days button').on( "click", function() {
+		$('.pill-item1 .sc-days button').removeClass( "btn-current" );
+	  	$( this ).addClass( "btn-current" );
+	  });
 });
 
 function attachEvents()
 {
 	//Common
-	$(".dropdown > select").change(onDevicesSelectChange);
+	$(".med-header .dropdown > select").change(onDevicesSelectChange);
 	$("li.pills").click(onPillsTabClick);
 	$("li.schedule").click(onScheduleTabClick);
 	$("li.shopping-card").click(onShoppingCardTabClick);
@@ -50,7 +66,8 @@ function attachEvents()
 function getDevicesList()
 {
 	$.get( "http://medicus-dev.herokuapp.com/api/v1/user", function( data ) {
-  		if(data && data.devices)
+  		currentUser=data;
+		if(data && data.devices)
 		{
 			var devicesList=data.devices;
 			//Fill the Devices dropdown
@@ -60,7 +77,7 @@ function getDevicesList()
 				$("div.dropdown > select").append(option);
 			}
 			
-			$("select").selectBoxIt();
+			$(".med-header select").selectBoxIt();
 		}
 		else
 		{
@@ -81,7 +98,55 @@ function getMedicineListForAllBoxes()
 //-------------Event handlers-----------------
 function onDevicesSelectChange(event)
 {
-	//TODO
+	 //Fill schedule fields
+	 var pills1 = currentUser.devices[0].pills
+	 var pill1Select = ""; 
+		$.each( pills1, function( key, value ) {
+			if (typeof value != 'undefined') {
+				pill1Select += '<option vlaue="'+value+'">'+value+'</option>';
+			}
+		});
+		
+	 $(".pill-item1 .dropdown select").html(pill1Select);
+	 $(".pill-item1 .dropdown select").selectBoxIt();
+	 
+	 $(".pill-item2 .dropdown select").html(pill1Select);
+	 $(".pill-item2 .dropdown select").selectBoxIt();
+	 
+	 $(".pill-item3 .dropdown select").html(pill1Select);
+	 $(".pill-item3 .dropdown select").selectBoxIt();
+	 
+	 $(".pill-item1 .sc-quantity").val(currentUser.devices[0].schedule[0].amount);
+	 $(".pill-item2 .sc-quantity").val(currentUser.devices[0].schedule[1].amount);
+	 $(".pill-item3 .sc-quantity").val(currentUser.devices[0].schedule[2].amount);
+	 
+	 $(".pill-item1 .sc-date").val(moment(currentUser.devices[0].schedule[0].time.timestamps[0]).format('YYYY/MM/DD'));
+	 $(".pill-item2 .sc-date").val(moment(currentUser.devices[0].schedule[1].time.timestamps[0]).format('YYYY/MM/DD'));
+	 $(".pill-item3 .sc-date").val(moment(currentUser.devices[0].schedule[2].time.timestamps[0]).format('YYYY/MM/DD'));
+	 
+	 $(".pill-item1 .sc-time").val(moment(currentUser.devices[0].schedule[0].time.timestamps[0]).format('HH:mm'));
+	 $(".pill-item2 .sc-time").val(moment(currentUser.devices[0].schedule[1].time.timestamps[0]).format('HH:mm'));
+	 $(".pill-item3 .sc-time").val(moment(currentUser.devices[0].schedule[2].time.timestamps[0]).format('HH:mm'));	 
+	 
+	 $('.pill-item1 .datepicker').datetimepicker({
+    	 pickTime: false
+     });
+	 $('.pill-item2 .datepicker').datetimepicker({
+    	 pickTime: false
+     });
+	 $('.pill-item3 .datepicker').datetimepicker({
+    	 pickTime: false
+     });
+	 
+	  $('.pill-item1 .sc-days button').removeClass( "btn-current" );
+	  $('.pill-item1 .sc-days .scd-'+currentUser.devices[0].schedule[0].time.days_interval).addClass( "btn-current" );	  
+	  
+	  $('.pill-item2 .sc-days button').removeClass( "btn-current" );
+	  $('.pill-item2 .sc-days .scd-'+currentUser.devices[0].schedule[1].time.days_interval).addClass( "btn-current" );
+	  	  
+	  $('.pill-item3 .sc-days button').removeClass( "btn-current" );
+	  $('.pill-item3 .sc-days .scd-'+currentUser.devices[0].schedule[2].time.days_interval).addClass( "btn-current" );
+
 }
 
 function onAddTimestampClick(selectedBox)
@@ -163,11 +228,11 @@ function onSaveScheduleButtonClick(selectedBox)
 	{
 		case BOX_1:
 		{
-			var box1Id=parseInt($("#box1_id").val());
+			var box1Id=1;
 			//Get medicine id
-			var medicine1Id=parseInt($("#medicineSelect1").val());
+			var medicine1Id=parseInt($(".pill-item1 select").val());
 			//Get interval
-			var interval1=$("#interval1").val();
+			var interval1=parseInt($(".pill-item1 .btn-current").attr("class").split(" ")[2].split("-")[1]);
 			
 			//TODO: Get timestamps
 			
@@ -176,7 +241,7 @@ function onSaveScheduleButtonClick(selectedBox)
 		}
 		case BOX_2:
 		{
-			var box2Id=parseInt($("#box2_id").val());
+			var box2Id=2;
 			//Get medicine id
 			var medicine2Id=parseInt($("#medicineSelect2").val());
 			//Get interval
@@ -189,7 +254,7 @@ function onSaveScheduleButtonClick(selectedBox)
 		}
 		case BOX_3:
 		{
-			var box3Id=parseInt($("#box3_id").val());
+			var box3Id=3;
 			//Get medicine id
 			var medicine3Id=parseInt($("#medicineSelect3").val());
 			//Get interval

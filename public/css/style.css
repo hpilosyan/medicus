@@ -243,6 +243,9 @@ h1.cur-title {
 	margin-left: 110px;
     margin-top: 12px;
 }
+#schedule-boxes .dropdown select {
+	display: none;
+}
 .bootstrap-datetimepicker-widget td.active, .bootstrap-datetimepicker-widget td.active:hover, .btn-primary {
 	background: #660b10 !important;
 }
