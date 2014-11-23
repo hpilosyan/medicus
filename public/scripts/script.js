@@ -68,7 +68,7 @@ function attachEvents()
 
 function getDevicesList()
 {
-	$.get( "http://172.24.20.30:3000/api/v1/old/user", function( data ) {
+	$.get( base_url + "/user", function( data ) {
   		currentUser=data;
 		if(data && data.devices)
 		{
