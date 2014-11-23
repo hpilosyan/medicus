@@ -12,7 +12,7 @@ router.post('/:device_token', function(req, res, next) {
 
   schedule.create_schedule(device_token, new_schedule).then(function(result) {
     // Send schedule to Imp client
-    imp_request.send_schedule(new_schedule).then(function() {
+    imp_request.send_schedule(device_token).then(function() {
       res.json(result);
     }, function(err) {
       next(new Error("Can't access device!"));
