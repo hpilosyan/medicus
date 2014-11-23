@@ -7,15 +7,18 @@ var router = express.Router();
 router.get('/:box', function(req, res) {
   var box = req.params.box;
 
-  user.get_user().then(function (user, box) {
+  user.get_user().then(function (user) {
     var tokens = user.mobile_device_token;
-    for (var i = 0; i < tokens.length; i++) {
+    send_notification(tokens[1], box, res);
+    /*for (var i = 0; i < tokens.length; i++) {
+
+      console.log(tokens[i]);
       send_notification(tokens[i], box);
-    }
+    }*/
   });
 });
 
-function send_notification (token, box) {
+function send_notification (token, box, res) {
   var myDevice = new apn.Device(token);
 
   var note = new apn.Notification();
@@ -27,8 +30,10 @@ function send_notification (token, box) {
   note.device = myDevice;
 
   var callback = function (errorNum, notification) {
+      console.log("HERE");
       console.log('Error is: %s', errorNum);
       console.log("Note ", notification);
+      res.json({});
   };
   var options = {
       gateway: 'gateway.sandbox.push.apple.com', // this URL is different for Apple's Production Servers and changes when you go to production
